@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: payment-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8085
+
+database:
+  url: postgresql://localhost:5432/paymentdb
+  username: postgres
+  password: Vfvf31101988

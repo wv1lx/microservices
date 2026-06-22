@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: order-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8082
+
+database:
+  url: postgresql://localhost:5432/orderdb
+  username: postgres
+  password: postgres

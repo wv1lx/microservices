@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-user-service
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+        - name: user-service
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+            - name: SPRING_R2DBC_URL
+              value: "r2dbc:{{ .Values.database.url }}"
+            - name: SPRING_R2DBC_USERNAME
+              value: {{ .Values.database.username }}
+            - name: SPRING_R2DBC_PASSWORD
+              value: {{ .Values.database.password }}
+            - name: SPRING_LIQUIBASE_URL
+              value: "jdbc:{{ .Values.database.url }}"
+            - name: SPRING_LIQUIBASE_USER
+              value: {{ .Values.database.username }}
+            - name: SPRING_LIQUIBASE_PASSWORD
+              value: {{ .Values.database.password }}

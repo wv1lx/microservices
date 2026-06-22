@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: product-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8083
+
+database:
+  url: postgresql://localhost:5432/productdb
+  username: postgres
+  password: Vfvf31101988
