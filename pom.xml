@@ -27,6 +27,7 @@
     <module>product-service</module>
     <module>notification-service</module>
     <module>payment-service</module>
+    <module>benchmarks</module>
   </modules>
 
 </project>
